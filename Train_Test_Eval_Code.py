@@ -22,7 +22,7 @@ import tensorflow as tf
 import matplotlib.pyplot as plt
 from keras_preprocessing.image import ImageDataGenerator
 from tensorflow.keras.callbacks import ModelCheckpoint, EarlyStopping
-import FlexUNET_Model
+from FlexUNET_Model() import FlexUNET_Model
 
 ### Preprocessing Stage based on Color Transformation and Patch extraction ###
 '''
