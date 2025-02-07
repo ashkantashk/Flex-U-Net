@@ -230,7 +230,7 @@ plt.show()
 '''
 ##############################################################################
 
-IMG_HEIGHT, IMG_WIDTH, IMG_CHANNELS = [256, 512, 3]
+IMG_HEIGHT, IMG_WIDTH, IMG_CHANNELS = [256, 256, 3]
 
 
 train_files = []
@@ -255,7 +255,7 @@ def train_generator(data_frame, batch_size, aug_dict,
                     target_size=(IMG_CHANNELS, IMG_WIDTH),
                     seed=1):
     '''
-    can generate image and mask at the same time use the same seed for
+    can generate an image and mask at the same time use the same seed for
     image_datagen and mask_datagen to ensure the transformation for image
     and mask is the same if you want to visualize the results of generator,
     set save_to_dir = "your path"
