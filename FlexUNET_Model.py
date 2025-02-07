@@ -63,11 +63,10 @@ def decoder_block(input, skip_features, num_filters):
 
 def Flex_U_Net_Segmentation(NN, KK, dd, Final_Act, backbone=None):    
     if backbone==None:
-        NL = 9 + (KK + dd - 1) * 5  # No. of layers for EU-Net architecture
+        NL = 9 + (KK + dd - 1) * 5  # No. of layers for Flex-U-Net architecture
         MD = [None] * (NL)  # EU_Net Layers combination
         MD[0] = Input(input_size)
-        # MD[1] = Lambda(lambda x: x/255)(MD[0])
-        MD
+        MD[1] = Lambda(lambda x: x/255)(MD[0])
         for tt in np.arange(0, KK):
             MD[2 * (tt + 1)] = Con_Exp_Path(NN + tt, 0.1 * (1 + np.fix(tt / 2)), MD[2 * (tt) + 1])
             MD[2 * (tt + 1) + 1] = MaxPooling2D((2, 2))(MD[2 * (tt + 1)])
@@ -119,7 +118,7 @@ def Flex_U_Net_Segmentation(NN, KK, dd, Final_Act, backbone=None):
         else:
             MD[gg + 1] = Conv2D(1, kernel_size=(1, 1), activation=Final_Act)(MD[gg])
     
-        model = Model(inputs=[MD[0]], outputs=[MD[gg + 1]], name='EU-Net')
+        model = Model(inputs=[MD[0]], outputs=[MD[gg + 1]], name='Flex-U-Net')
     elif 'vgg' in backbone:
         if KK > 4:
             KK=4
